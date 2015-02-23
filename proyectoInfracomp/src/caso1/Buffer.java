@@ -1,5 +1,6 @@
 package caso1;
 
+
 import java.util.ArrayList;
 
 public class Buffer {
@@ -8,7 +9,7 @@ public class Buffer {
 	/**
 	 * Lista en donde se guardan los mensajes
 	 */
-	private ArrayList buff;
+	private ArrayList<Mensaje> buff;
 	
 	/**
 	 * Maximo numero de mensajes que pueden haber en el buffer
@@ -18,5 +19,7 @@ public class Buffer {
 	//Constructor
 	public Buffer(int nCap){
 		capacidad = nCap;
+		buff = new ArrayList<Mensaje>();
 	}
+	
 }

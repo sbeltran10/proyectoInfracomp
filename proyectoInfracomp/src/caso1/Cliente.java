@@ -9,7 +9,15 @@ public class Cliente extends Thread{
 	 */
 	private int msjEnviados;
 	
+	/**
+	 * Buffer al cual se enviaran los mensajes
+	 */
+	private Buffer buffer;
+	
+	
 	//Constructor
-	public Cliente(){
+	public Cliente(int nMensajes, Buffer nBuffer){
+		msjEnviados = nMensajes;
+		buffer = nBuffer;
 	}
 }
