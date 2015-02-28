@@ -42,6 +42,7 @@ public class Buffer {
 	}
 	
 	public synchronized int responder(){
+		
 		while(buff.size()==0){
 			try {
 				wait();
@@ -53,14 +54,6 @@ public class Buffer {
 		aResponder.incrementarMensaje();
 		aResponder.notify();
 		return aResponder.darSecuencia();
-	}
-	
-	private synchronized void sacarClientes(){
-		totalClientes--;
-	}
-	
-	public int darTotalClientes(){
-		return totalClientes;
 	}
 	
 }
