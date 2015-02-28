@@ -15,11 +15,27 @@ public class Buffer {
 	 * Maximo numero de mensajes que pueden haber en el buffer
 	 */
 	private int capacidad;
+	
+	/**
+	 * Numero total de clientes
+	 * @param nCap
+	 */
+	private int totalClientes;
 
 	//Constructor
-	public Buffer(int nCap){
+	public Buffer(int nCap, int nTotal){
 		capacidad = nCap;
+		totalClientes = nTotal;
 		buff = new ArrayList<Mensaje>();
+	}
+	
+	//Metodos depositar y responder (Sincronicos)
+	public synchronized void depositar(){
+		
+	}
+	
+	public synchronized void responder(){
+		
 	}
 	
 }

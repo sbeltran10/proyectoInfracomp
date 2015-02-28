@@ -13,4 +13,9 @@ public class Server extends Thread{
 	public Server(Buffer nBuffer){
 		buffer = nBuffer;
 	}
+	
+	//Run
+	public void run(){
+		
+	}
 }

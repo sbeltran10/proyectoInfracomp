@@ -20,4 +20,9 @@ public class Cliente extends Thread{
 		msjEnviados = nMensajes;
 		buffer = nBuffer;
 	}
+	
+	//Run
+	public void run(){
+		
+	}
 }

@@ -11,13 +11,14 @@ public class ConsultaGDTS {
 	public static void main(String[] args){
 
 		int capBuffy = 10;
-		Buffer buffy = new Buffer(capBuffy);
+		
+		Buffer buffy;
 		Server[] servers;
 		Cliente[] clientes;
 
 		try {
 
-			//Lee el numero de servidores y clientes para inicializar los arreglos
+			//Lee el numero de servidores y clientes para inicializar los arreglos y el buffer
 			FileReader fr = new FileReader(new File(RUTA_ARCHIVO));
 			BufferedReader br = new BufferedReader(fr);
 
@@ -27,7 +28,9 @@ public class ConsultaGDTS {
 
 			servers = new Server[nServidores];
 			clientes = new Cliente[nClientes];
-
+			buffy = new Buffer(capBuffy,nClientes);
+			
+			
 			//Se inicializan y empiezan a correr los thread servidores
 			for(int i = 0; i<nServidores;i++){
 				servers[i] = new Server(buffy);
