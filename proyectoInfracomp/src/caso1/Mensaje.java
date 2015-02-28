@@ -8,14 +8,24 @@ public class Mensaje {
 	 */
 	private int secuenciaNum;
 	
+	/**
+	 * Cliente asociado
+	 */
+	private int cliente;
+	
 	//Constructor
-	public Mensaje(int nNum){
+	public Mensaje(int nNum, int nCli){
 		secuenciaNum = nNum;
+		cliente = nCli;
 	}
 	
 	//Getters
 	public int darSecuencia(){
 		return secuenciaNum;
+	}
+	
+	public int darcliente(){
+		return cliente;
 	}
 	
 	/**

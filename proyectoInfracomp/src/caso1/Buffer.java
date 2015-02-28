@@ -31,37 +31,47 @@ public class Buffer {
 	
 	//Metodos depositar y responder (Sincronicos)
 	
-	public boolean depositar(Mensaje msj){
+	public boolean depositar(){
 		
 		if(buff.size()==capacidad){
+
 			return false;
 		}
-		
-		buff.add(msj);
+	
 		return true;
 	}
 	
-	public synchronized int responder(){
+	public int responder(){
 		
 		while(buff.size()==0){
 			try {
+				System.err.println("Server se durmio");
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		Mensaje aResponder = buff.remove(0);
-		aResponder.incrementarMensaje();
-		aResponder.notify();
-		System.out.println("Se respondio el mensaje " + aResponder.darSecuencia());
+		Mensaje aResponder = buff.get(0);
+		synchronized (aResponder) {
+			buff.remove(aResponder);
+			aResponder.incrementarMensaje();
+			aResponder.notify();
+			System.out.println("Se respondio el mensaje " + aResponder.darSecuencia() + " del cliente " + aResponder.darcliente());
+		}
 		return aResponder.darSecuencia();
 	}
 	
 	public void sacarCliente(){
-		totalClientes--;
+		--totalClientes;
+		System.err.println(totalClientes);
 	}
 	
 	public int darTotalClientes(){
 		return totalClientes;
 	}
+	
+	public ArrayList<Mensaje> darbuffer(){
+		return buff;
+	}
 }
+

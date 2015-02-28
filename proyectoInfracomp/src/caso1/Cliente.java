@@ -28,28 +28,35 @@ public class Cliente extends Thread{
 	//Run
 	public void run(){
 
-		
+		System.out.println("Cliente llego");
 		while(msjEnviados>0){
-			int secuencia = (int) (Math.random()*5);
-			Mensaje msj = new Mensaje(secuencia);
+			int secuencia = (int) (Math.random()*30);
+			Mensaje msj = new Mensaje(secuencia, id);
 
 			synchronized (buffer) {
 
-				while(!buffer.depositar(msj)){
+				while(!buffer.depositar()){
 					yield();
 				}
-				
-				buffer.notifyAll();
+
 				System.out.println("El cliente " + id + " deposito el mensaje: " + msj.darSecuencia());
-				msjEnviados--;
-				
+				buffer.darbuffer().add(msj);
+				buffer.notifyAll();
+				--msjEnviados;
+			}
+
+			synchronized (msj) {
 				try {
 					msj.wait();
 				} catch (InterruptedException e) {}
 			}
+
 		}
-		
-		buffer.sacarCliente();
+
+		synchronized (buffer) {
+			System.err.println("Se largo un cliente " + id );
+			buffer.sacarCliente();
+		}
 	}
 }
 

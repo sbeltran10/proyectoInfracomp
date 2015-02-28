@@ -10,7 +10,7 @@ public class ConsultaGDTS {
 	//Main
 	public static void main(String[] args){
 
-		int capBuffy = 10;
+		int capBuffy = 1;
 
 		Buffer buffy;
 		Server[] servers;
@@ -49,10 +49,9 @@ public class ConsultaGDTS {
 
 			br.close();
 			fr.close();
-
+			
 		} catch (Exception e) {e.printStackTrace();
 		}
-
-
+		
 	}
 }

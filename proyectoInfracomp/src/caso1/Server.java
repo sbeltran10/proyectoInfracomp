@@ -18,8 +18,11 @@ public class Server extends Thread{
 	
 	//Run
 	public void run(){
-		while(true){
-			buffer.responder();
+		
+		synchronized (buffer) {
+			while(buffer.darTotalClientes()>0){
+				buffer.responder();
+			}
 		}
 	}
 }
