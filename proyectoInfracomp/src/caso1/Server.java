@@ -16,6 +16,8 @@ public class Server extends Thread{
 	
 	//Run
 	public void run(){
-		
+		while(true){
+			buffer.responder();
+		}
 	}
 }

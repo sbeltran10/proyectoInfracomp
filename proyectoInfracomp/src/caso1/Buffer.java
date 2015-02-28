@@ -34,7 +34,7 @@ public class Buffer {
 		
 	}
 	
-	public synchronized int responder(Mensaje mensaje){
+	public synchronized int responder(){
 		while(buff.size()==0){
 			try {
 				wait();
