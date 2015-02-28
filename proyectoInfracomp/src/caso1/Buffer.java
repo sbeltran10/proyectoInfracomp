@@ -30,8 +30,15 @@ public class Buffer {
 	}
 	
 	//Metodos depositar y responder (Sincronicos)
-	public synchronized void depositar(){
+	
+	public boolean depositar(Mensaje msj){
 		
+		if(buff.size()==capacidad){
+			return false;
+		}
+		
+		buff.add(msj);
+		return true;
 	}
 	
 	public synchronized void responder(){

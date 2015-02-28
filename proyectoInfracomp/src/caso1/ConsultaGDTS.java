@@ -19,6 +19,7 @@ public class ConsultaGDTS {
 		try {
 
 			//Lee el numero de servidores y clientes para inicializar los arreglos y el buffer
+			
 			FileReader fr = new FileReader(new File(RUTA_ARCHIVO));
 			BufferedReader br = new BufferedReader(fr);
 
@@ -42,12 +43,13 @@ public class ConsultaGDTS {
 
 				int nMensajesALeer = Integer.parseInt(br.readLine());
 
-				clientes[i] = new Cliente(nMensajesALeer, buffy);
+				clientes[i] = new Cliente(nMensajesALeer, buffy, i);
 				clientes[i].start();
 			}
 
 			br.close();
 			fr.close();
+			
 		} catch (Exception e) {e.printStackTrace();}
 
 	}
