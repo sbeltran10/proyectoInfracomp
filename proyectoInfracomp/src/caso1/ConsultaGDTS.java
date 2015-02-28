@@ -48,7 +48,8 @@ public class ConsultaGDTS {
 
 			br.close();
 			fr.close();
-		} catch (Exception e) {e.printStackTrace();}
+		} catch (Exception e) {e.printStackTrace();
+		}
 
 	}
 }

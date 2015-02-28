@@ -34,8 +34,18 @@ public class Buffer {
 		
 	}
 	
-	public synchronized void responder(){
-		
+	public synchronized int responder(Mensaje mensaje){
+		while(buff.size()==0){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		Mensaje aResponder = buff.remove(0);
+		aResponder.incrementarMensaje();
+		aResponder.notify();
+		return aResponder.darSecuencia();
 	}
 	
 }
