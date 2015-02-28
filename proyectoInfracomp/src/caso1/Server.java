@@ -8,10 +8,12 @@ public class Server extends Thread{
 	 * Buffer del cual retirara mensajes
 	 */
 	private Buffer buffer;
+	private int id;
 	
 	//Constructor
-	public Server(Buffer nBuffer){
+	public Server(Buffer nBuffer, int nId){
 		buffer = nBuffer;
+		id=nId;
 	}
 	
 	//Run

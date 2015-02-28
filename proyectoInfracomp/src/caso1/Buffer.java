@@ -48,4 +48,12 @@ public class Buffer {
 		return aResponder.darSecuencia();
 	}
 	
+	private synchronized void sacarClientes(){
+		totalClientes--;
+	}
+	
+	public int darTotalClientes(){
+		return totalClientes;
+	}
+	
 }
