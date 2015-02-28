@@ -34,7 +34,7 @@ public class ConsultaGDTS {
 
 			//Se inicializan y empiezan a correr los thread servidores
 			for(int i = 0; i<nServidores;i++){
-				servers[i] = new Server(buffy);
+				servers[i] = new Server(buffy, i);
 				servers[i].start();
 			}
 
