@@ -39,7 +39,8 @@ public class Cliente extends Thread{
 					yield();
 				}
 				
-				System.out.print("El cliente " + id + " deposito el mensaje: " + msj.darSecuencia());
+				buffer.notifyAll();
+				System.out.println("El cliente " + id + " deposito el mensaje: " + msj.darSecuencia());
 				msjEnviados--;
 				
 				try {
@@ -48,7 +49,7 @@ public class Cliente extends Thread{
 			}
 		}
 		
-//		buffer.sacarCliente();
+		buffer.sacarCliente();
 	}
 }
 

@@ -53,7 +53,15 @@ public class Buffer {
 		Mensaje aResponder = buff.remove(0);
 		aResponder.incrementarMensaje();
 		aResponder.notify();
+		System.out.println("Se respondio el mensaje " + aResponder.darSecuencia());
 		return aResponder.darSecuencia();
 	}
 	
+	public void sacarCliente(){
+		totalClientes--;
+	}
+	
+	public int darTotalClientes(){
+		return totalClientes;
+	}
 }
