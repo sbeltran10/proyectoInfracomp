@@ -10,7 +10,7 @@ public class ConsultaGDTS {
 	//Main
 	public static void main(String[] args){
 
-		int capBuffy = 10;
+		int capBuffy = 1;
 
 		Buffer buffy;
 		Server[] servers;
@@ -35,6 +35,7 @@ public class ConsultaGDTS {
 			//Se inicializan y empiezan a correr los thread servidores
 			for(int i = 0; i<nServidores;i++){
 				servers[i] = new Server(buffy, i);
+				
 				servers[i].start();
 			}
 
@@ -52,7 +53,7 @@ public class ConsultaGDTS {
 
 		} catch (Exception e) {e.printStackTrace();
 		}
-
+		
 
 	}
 }
