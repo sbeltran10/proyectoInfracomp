@@ -31,13 +31,11 @@ public class Buffer {
 
 	//Metodos depositar y responder (Sincronicos)
 
-	public synchronized boolean depositar(Mensaje msj){
+	public synchronized boolean depositar(){
 
 		if(buff.size()==capacidad){
 			return false;
 		}
-
-		buff.add(msj);
 		return true;
 	}
 
@@ -57,7 +55,7 @@ public class Buffer {
 		synchronized(aResponder){
 			buff.remove(aResponder);
 			aResponder.incrementarMensaje();
-			System.out.println("Se respondio el mensaje " + aResponder.darSecuencia());
+			System.out.println("Se respondió el mensaje " + aResponder.darSecuencia());
 			aResponder.notify();
 		}
 		return aResponder.darSecuencia();
@@ -74,5 +72,9 @@ public class Buffer {
 	
 	public ArrayList<Mensaje> darBuffer(){
 		return buff;
+	}
+	
+	public boolean hayClientes(){
+		return totalClientes > 0;
 	}
 }

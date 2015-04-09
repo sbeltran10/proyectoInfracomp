@@ -19,11 +19,8 @@ public class Server extends Thread{
 	//Run
 	public void run(){
 		synchronized(buffer){
-			while(buffer.darTotalClientes()>0){
+			while(buffer.hayClientes()){
 				buffer.responder();
-				if(buffer.darTotalClientes()==0){
-					this.interrupt();
-				}
 			}
 		}
 	}

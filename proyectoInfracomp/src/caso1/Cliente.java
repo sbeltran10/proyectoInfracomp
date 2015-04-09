@@ -28,21 +28,22 @@ public class Cliente extends Thread{
 	//Run
 	public void run(){
 
-		System.out.println("llego el cliente modafoca"+id);
+		System.out.println("llego el cliente "+id);
 		while(msjEnviados>0){
 			int secuencia = (int) (Math.random()*5);
 			Mensaje msj = new Mensaje(secuencia,id);
 
 
-			while(!buffer.depositar(msj)){
+			while(!buffer.depositar()){
 				yield();
 			}
 
-			System.out.println("El cliente " + id + " deposito el mensaje: " + msj.darSecuencia());
 
 			synchronized(msj){
 				try {
 					synchronized (buffer) {
+						buffer.darBuffer().add(msj);
+						System.out.println("El cliente " + id + " depositó el mensaje: " + msj.darSecuencia());
 						buffer.notify();
 						--msjEnviados;
 					}
@@ -51,8 +52,9 @@ public class Cliente extends Thread{
 			}
 		}
 		synchronized(buffer){
-			System.err.println("se largo el cliente " + id);
+			System.err.println("Se retiró el cliente " + id);
 			buffer.sacarCliente();
+			buffer.notifyAll();
 		}
 	}
 }
